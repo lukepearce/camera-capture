@@ -4,9 +4,6 @@ import Image from 'next/image'
 import styles from './page.module.css'
 
 export default function Home() {
-  const supported = 'mediaDevices' in navigator;
-
-  console.log('supported', supported);
   const takePhoto = () => {
     const player = document.getElementById('player') as HTMLVideoElement;
     const canvas = document.getElementById('canvas')! as HTMLCanvasElement;
