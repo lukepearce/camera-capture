@@ -22,7 +22,7 @@ export default function Home() {
 
     captureButton.addEventListener('click', () => {
       // Draw the video frame to the canvas.
-      context.drawImage(player, 0, 0, canvas.width, canvas.height);
+      context.drawImage(player, 0, 0, canvas?.width, canvas.height);
     });
 
     // Attach the video stream to the video element and autoplay.
