@@ -1,7 +1,35 @@
+'use client';
+
 import Image from 'next/image'
 import styles from './page.module.css'
 
 export default function Home() {
+  console.log(window);
+  console.log('hi');
+
+  const supported = 'mediaDevices' in navigator;
+
+  console.log('supported', supported);
+  const takePhoto = () => {
+    const player = document.getElementById('player');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const captureButton = document.getElementById('capture');
+
+    const constraints = {
+      video: true,
+    };
+
+    captureButton.addEventListener('click', () => {
+      // Draw the video frame to the canvas.
+      context.drawImage(player, 0, 0, canvas.width, canvas.height);
+    });
+
+    // Attach the video stream to the video element and autoplay.
+    navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+      player.srcObject = stream;
+    });
+  };
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -13,6 +41,12 @@ export default function Home() {
           Get started by editing{' '}
           <code className={styles.code}>app/page.tsx</code>
         </p>
+
+        <div onClick={() => takePhoto()}>Take Photo</div>
+
+        <video id="player" controls autoplay></video>
+        <button id="capture">Capture</button>
+        <canvas id="canvas" width="320" height="240"></canvas>
 
         <div className={styles.grid}>
           <a href="https://beta.nextjs.org/docs" className={styles.card}>
