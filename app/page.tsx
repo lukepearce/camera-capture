@@ -44,7 +44,7 @@ export default function Home() {
 
         <div onClick={() => takePhoto()}>Take Photo</div>
 
-        <video id="player" controls autoplay></video>
+        <video id="player" controls></video>
         <button id="capture">Capture</button>
         <canvas id="canvas" width="320" height="240"></canvas>
 
