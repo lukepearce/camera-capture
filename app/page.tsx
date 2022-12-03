@@ -11,10 +11,10 @@ export default function Home() {
 
   console.log('supported', supported);
   const takePhoto = () => {
-    const player = document.getElementById('player');
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const captureButton = document.getElementById('capture');
+    const player = document.getElementById('player') as HTMLVideoElement;
+    const canvas = document.getElementById('canvas')! as HTMLCanvasElement;
+    const context = canvas.getContext('2d')!;
+    const captureButton = document.getElementById('capture')!;
 
     const constraints = {
       video: true,
